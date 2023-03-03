@@ -5,3 +5,8 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def moods_index(request):
+  return render(request, 'moods/index.html', {
+    'moods': moods
+  })
