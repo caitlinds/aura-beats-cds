@@ -19,9 +19,13 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/moods">View All Moods</a></li>
-
+          <li><a href="{% url 'about' %}">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>

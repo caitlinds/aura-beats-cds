@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Moods(models.Model):
+class Mood(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
 
