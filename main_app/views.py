@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+cats = [
+  {'name': 'Happy', 'description': 'happy'},
+  {'name': 'Blue', 'description': 'sad'},
+]
+
 def home(request):
   return render(request, 'home.html')
 
