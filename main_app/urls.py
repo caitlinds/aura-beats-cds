@@ -7,4 +7,7 @@ urlpatterns = [
   path('accounts/signup/', views.signup, name='signup'),
   path('moods/', views.moods_index, name='index'),
   path('moods/<int:mood_id>/', views.moods_detail, name='detail'),
+  path('moods/create/', views.MoodCreate.as_view(), name='moods_create'),
+  path('moods/<int:pk>/update/', views.MoodUpdate.as_view(), name='moods_update'),
+  path('moods/<int:pk>/delete/', views.MoodDelete.as_view(), name='moods_delete'),
 ]
