@@ -39,6 +39,9 @@ def moods_index(request):
 @login_required
 def moods_detail(request, mood_id):
     mood = Mood.objects.get(id=mood_id)
+    return render(request, 'moods/detail.html', {
+       'mood': mood,
+    })
 
 def favorites(request, mood_id):
     mood = get_object_or_404(Mood, pk=mood_id)
