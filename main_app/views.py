@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
@@ -40,14 +40,30 @@ def moods_index(request):
 def moods_detail(request, mood_id):
     mood = Mood.objects.get(id=mood_id)
 
+def favorites(request, mood_id):
+    mood = get_object_or_404(Mood, pk=mood_id)
+    if mood.favorites.filter(id=request.user.ide).exist():
+        mood.favorites.remove(request.user)
+    else:
+        mood.favorites.add(request.user)
+    return render(request, 'favorites/mood_favorite_list.html')
+
+def mood_favorite_list(request, id):
+    user=request.user
+    favorite_moods = user.favorites.all()
+    context = {
+        'favorite_moods': favorite_moods
+    }
+    return render(request, 'favorites/mood_favorite_list.html', context)
+
 class MoodCreate(CreateView):
-    model = Mood
-    fields = ['name', 'description']
+  model = Mood
+  fields = ['name', 'description']
 
-def form_valid(self, form):
-        form.instance.user = self.request.user
+  def form_valid(self, form):
+    form.instance.user = self.request.user
 
-        return super().form_valid(form)
+    return super().form_valid(form)
 
 class MoodUpdate(UpdateView):
     model = Mood
