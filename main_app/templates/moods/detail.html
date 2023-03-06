@@ -17,17 +17,13 @@
     </div>
   </div>
   <div class="col s6">
-    <form action="{% url 'add_listening' mood.id %}" method="POST">
-      {% csrf_token %}
-      {{ listening_form.as_p }}
-      <input type="submit" class="btn" value="Add Listening">
-    </form>
+    
     <br>
-    {% if mood.listen_for_today %}
+    <!-- {% if mood.listen_for_today %}
       <div class="card-panel teal-text center-align">{{mood.name}} has been selected today</div>
     {% else %}
       <div class="card-panel red-text center-align">{{mood.name}} has not been selected today</div>
-    {% endif %}
+    {% endif %} -->
   </div>
 </div>
      
