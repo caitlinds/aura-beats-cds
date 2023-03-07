@@ -4,12 +4,8 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Mood
-
-moods = [
-  {'name': 'Happy', 'description': 'happy'},
-  {'name': 'Blue', 'description': 'sad'},
-]
+from .models import Mood, User
+from datetime import date
 
 def home(request):
   return render(request, 'home.html')
@@ -33,7 +29,7 @@ def about(request):
 
 @login_required
 def moods_index(request):
-  moods = Mood.objects.all()
+  moods = Mood.objects.all().order_by('-id').values()
   return render(request, 'moods/index.html', { 'moods': moods })
 
 @login_required
@@ -59,6 +55,12 @@ def mood_favorite_list(request, id):
     }
     return render(request, 'favorites/mood_favorite_list.html', context)
 
+@login_required
+def my_moods(request):
+  userz = request.user
+  moods_list = Mood.objects.filter(user=request.user).order_by('-id').values()
+  return render(request, 'main_app/mood_list.html', { 'moods': moods_list, 'user': userz})
+
 class MoodCreate(CreateView):
   model = Mood
   fields = ['name', 'description']
@@ -71,7 +73,6 @@ class MoodCreate(CreateView):
 class MoodUpdate(UpdateView):
     model = Mood
     fields = ['description']
-
 
 class MoodDelete(DeleteView):
     model = Mood
