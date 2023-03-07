@@ -40,7 +40,7 @@ def moods_index(request):
 def moods_detail(request, mood_id):
     mood = Mood.objects.get(id=mood_id)
     return render(request, 'moods/detail.html', {
-       'mood': mood,
+       'mood': mood
     })
 
 def favorites(request, mood_id):
