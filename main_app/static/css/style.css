@@ -12,3 +12,19 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+.bg { 
+  max-width: auto;
+  height: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+ 
+} 
+
+#page-footer {
+  background-color: #d54600;
+}
+
+
+ 
