@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Search for a Song</h1>
+<form action="" method="GET">
+    <input type="text" name="q" value="{{ search_term }}">
+    <button type="submit">Search</button>
+</form>
+{% for video in videos %}
+    <li>{{ video.title }}</li>
+    <li>{{ video.description }}</li>
+    <li><img src="{{ video.thumbnail }}"></li>
+{% endfor %}
+{% endblock %}

@@ -25,10 +25,13 @@
             <li><a href="{% url 'index' %}">View All Moods</a></li>
             <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'songs' %}">Songs</a></li>
+            <li><a href="{% url 'search_video' %}">Search Songs</a></li>
+            <li><a href="{% url 'songs_create' %}">Add Song</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
         </ul>
       </div>
