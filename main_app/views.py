@@ -9,59 +9,66 @@ from .models import Mood, User, Song, Video
 from datetime import date
 import requests
 
+
 def home(request):
-  return render(request, 'home.html')
+    return render(request, 'home.html')
+
 
 def signup(request):
-  error_message = ''
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      user = form.save()
-      login(request, user)
-      return redirect('index')
-    else:
-      error_message = 'Invalid credientals, please try again'
-  form = UserCreationForm()
-  context = { 'form': form, 'error_message': error_message }
-  return render(request, 'registration/signup.html', context)
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid credientals, please try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
 
 def search_video(request):
-   search_term = request.GET.get('q')
-   response = requests.get(f'{os.environ["YOUTUBE_ROOT"]}q={search_term}&type=video&key={os.environ["YOUTUBE_API"]}&maxResults=10')
-   data = response.json()
-   videos = []
-   for item in data['items']:
-      title = item['snippet']['title']
-      video = {
-         'title': title,
-         'thumbnail': item['snippet']['thumbnails']['default']['url'],
-         'video_id': item['id']['videoId'],
-         'description': item['snippet']['description'],         
-      }
-      videos.append(video)
-   return render(request, 'songs/search_song.html', {
-      'videos': videos,
-      'search_term': search_term,
-   })
+    search_term = request.GET.get('q')
+    response = requests.get(
+        f'{os.environ["YOUTUBE_ROOT"]}q={search_term}&type=video&key={os.environ["YOUTUBE_API"]}&maxResults=10')
+    data = response.json()
+    videos = []
+    for item in data['items']:
+        title = item['snippet']['title']
+        video = {
+            'title': title,
+            'thumbnail': item['snippet']['thumbnails']['default']['url'],
+            'video_id': item['id']['videoId'],
+            'description': item['snippet']['description'],
+        }
+        videos.append(video)
+    return render(request, 'songs/search_song.html', {
+        'videos': videos,
+        'search_term': search_term,
+    })
 
 
 def search_page(request):
     return render(request, 'songs/search_page.html')
 
+
 def about(request):
     return render(request, 'about.html')
 
+
 @login_required
 def moods_index(request):
-  moods = Mood.objects.all().order_by('-id').values()
-  return render(request, 'moods/index.html', { 'moods': moods })
+    moods = Mood.objects.all().order_by('-id').values()
+    return render(request, 'moods/index.html', {'moods': moods})
+
 
 @login_required
 def moods_detail(request, mood_id):
     mood = Mood.objects.get(id=mood_id)
     return render(request, 'moods/detail.html', {
-       'mood': mood
+        'mood': mood
     })
 
 # def favorites(request, mood_id):
@@ -80,39 +87,80 @@ def moods_detail(request, mood_id):
 #     }
 #     return render(request, 'moods/favorites.html', context)
 
+
 @login_required
 def my_moods(request):
-  userz = request.user
-  moods_list = Mood.objects.filter(user=request.user).order_by('-id').values()
-  return render(request, 'main_app/mood_list.html', { 'moods': moods_list, 'user': userz})
+    userz = request.user
+    moods_list = Mood.objects.filter(
+        user=request.user).order_by('-id').values()
+    return render(request, 'main_app/mood_list.html', {'moods': moods_list, 'user': userz})
+
 
 class MoodCreate(CreateView):
-  model = Mood
-  fields = ['name', 'description']
+    model = Mood
+    fields = ['name', 'description']
 
-  def form_valid(self, form):
-    form.instance.user = self.request.user
+    def form_valid(self, form):
+        form.instance.user = self.request.user
 
-    return super().form_valid(form)
+        return super().form_valid(form)
+
 
 class MoodUpdate(UpdateView):
     model = Mood
     fields = ['description']
 
+
 class MoodDelete(DeleteView):
     model = Mood
     success_url = '/moods'
 
+
 class SongList(ListView):
     model = Song
+
+
 class SongDetail(DetailView):
     model = Song
+
+
 class SongCreate(CreateView):
     model = Song
     fields = '__all__'
+
+
 class SongUpdate(UpdateView):
     model = Song
-    fields = ['venue', 'city']
+    fields = ['title', 'url']
+
+
 class SongDelete(DeleteView):
     model = Song
     success_url = '/songs'
+
+
+def Add_To_Mood(request):
+    video_id, mood_id, video_title, video_thumbnail, video_description = None, None, None, None, None
+    if request.method == "POST":
+        video_id = request.POST.get(video_id)
+        mood_id = request.POST.get(mood_id)
+        video_title = request.POST.get(video_title)
+        video_thumbnail = request.POST.get(video_thumbnail)
+        video_description = request.POST.get(video_description)
+    if video_id and mood_id and video_title and video_thumbnail and video_description:
+        video, created = Video.objects.get_or_create(
+            video_id = video_id,
+            defaults={ 
+            "title": video_title,
+            "thumbnail": video_thumbnail,
+            "description": video_description,
+            }
+        ) 
+
+    mood = Mood.objects.get(id=mood_id)
+    video = Video.objects.get(video_id=video_id)
+    mood.videos.add(video)
+
+    return redirect('search_video')
+
+

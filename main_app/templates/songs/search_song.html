@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Search for a Song</h1>
-<form action="" method="GET">
+<form action="{% url 'search_video' %}" method="GET">
     <input type="text" name="q" value="{{ search_term }}">
     <button type="submit">Search</button>
 </form>
@@ -10,5 +10,17 @@
     <li>{{ video.title }}</li>
     <li>{{ video.description }}</li>
     <li><img src="{{ video.thumbnail }}"></li>
+<form action="{% url 'add_to_mood' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="video_id" value="{{ video.video_id }}">
+    <select name="mood_id" id="">
+        {% for mood in moods %} 
+            <option value="{{ mood.id }}">
+            {{ mood.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Add to Mood</button>
+</form>
 {% endfor %}
 {% endblock %}
