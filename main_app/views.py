@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Mood, User, Song
+from .models import Mood, User, Song, Video
 from datetime import date
 import requests
 
