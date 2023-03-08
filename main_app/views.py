@@ -44,9 +44,12 @@ def search_video(request):
             'description': item['snippet']['description'],
         }
         videos.append(video)
+    moods = Mood.objects.filter(user=request.user)
+    print(moods.count())
     return render(request, 'songs/search_song.html', {
         'videos': videos,
         'search_term': search_term,
+        'moods': moods
     })
 
 
