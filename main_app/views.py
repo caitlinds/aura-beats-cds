@@ -39,13 +39,15 @@ def search_video(request):
          'video_id': item['id']['videoId'],
          'description': item['snippet']['description'],         
       }
-   videos.append(video)
-   print(len(videos))
+      videos.append(video)
    return render(request, 'songs/search_song.html', {
       'videos': videos,
       'search_term': search_term,
    })
 
+
+def search_page(request):
+    return render(request, 'songs/search_page.html')
 
 def about(request):
     return render(request, 'about.html')

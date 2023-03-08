@@ -1,4 +1,6 @@
 body {
+    height: 100%;
+    width: 100%;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -13,18 +15,8 @@ body {
     text-align: right;
   }
 
-.bg { 
-  max-width: auto;
-  height: auto;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
- 
-} 
-
-#page-footer {
-  background-color: #d54600;
+.home {
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
 }
-
-
- 
