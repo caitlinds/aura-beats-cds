@@ -139,28 +139,20 @@ class SongDelete(DeleteView):
     success_url = '/songs'
 
 
-def Add_To_Mood(request):
-    video_id, mood_id, video_title, video_thumbnail, video_description = None, None, None, None, None
+def add_to_mood(request):
     if request.method == "POST":
-        video_id = request.POST.get(video_id)
-        mood_id = request.POST.get(mood_id)
-        video_title = request.POST.get(video_title)
-        video_thumbnail = request.POST.get(video_thumbnail)
-        video_description = request.POST.get(video_description)
-    if video_id and mood_id and video_title and video_thumbnail and video_description:
-        video, created = Video.objects.get_or_create(
-            video_id = video_id,
-            defaults={ 
-            "title": video_title,
-            "thumbnail": video_thumbnail,
-            "description": video_description,
-            }
-        ) 
-
-    mood = Mood.objects.get(id=mood_id)
-    video = Video.objects.get(video_id=video_id)
-    mood.videos.add(video)
-
+        try:
+            video, created = Video.objects.get_or_create(
+                video_id=request.POST.get(video_id),
+                defaults={
+                    "title": request.POST.get(video_title),
+                    "thumbnail": request.POST.get(video_thumbnail),
+                    "description": request.POST.get(video_description),
+                }
+            )
+            mood_id = request.POST.get(mood_id)
+            mood = Mood.objects.get(id=mood_id)
+            mood.videos.add(video_id)
+        except Exception as e:
+            print(e)
     return redirect('search_video')
-
-
