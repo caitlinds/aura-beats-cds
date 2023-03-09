@@ -4,6 +4,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+  
   }
   
   main {
@@ -20,3 +21,22 @@ body {
   height: 100%;
   padding-top: 40px;
 }
+
+.about {
+  width: 65%;
+  height: 65%;
+  padding-top: 40px;
+}
+
+.index {
+  width: 75%;
+  height: 75%;
+}
+
+.addmood {
+  width: 65%;
+  height: 65%;
+}
+
+
+

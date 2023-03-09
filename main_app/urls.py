@@ -21,4 +21,5 @@ urlpatterns = [
   path('songs/<int:pk>/update/', views.SongUpdate.as_view(), name='songs_update'),
   path('songs/<int:pk>/delete/', views.SongDelete.as_view(), name='songs_delete'),
   path('add_to_mood/', views.add_to_mood, name='add_to_mood'),
+  path('moods/<int:mood_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
