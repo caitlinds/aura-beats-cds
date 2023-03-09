@@ -25,9 +25,7 @@
             <li><a href="{% url 'index' %}">View All Moods</a></li>
             <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
-            <li><a href="{% url 'songs' %}">Songs</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
-            <li><a href="{% url 'songs_create' %}">Add Song</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -37,10 +35,8 @@
       </div>
     </nav>
   </header>
-  <main class="container">
     {% block content %}
     {% endblock %}
-  </main>
   <footer class="page-footer" style="background-color: #D54600;">
     <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
   </footer>

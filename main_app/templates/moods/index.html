@@ -1,16 +1,64 @@
-{% extends 'base.html' %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aura Beats</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<h1>Moods</h1>
-{% for mood in moods %}
-  <a href="{% url 'detail' mood.id %}">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ mood.name }}</span>
-        <p>Description: {{ mood.description }}</p>
+</head>
+<body>
+
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper" style="background-color: rgb(27 66 246);">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="{% url 'about' %}">About</a></li> 
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'search_page' %}">Search Songs</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
       </div>
-    </div>
-  </a>
-{% endfor %}
+    </nav>
+  </header>
 
-{% endblock %}
+  <div id="index-body">
+  <h1 id="title">All Moods</h1>
+    <div id="index-container">
+      <br>
+      <br>
+      <br>
+      <br>
+      {% for mood in moods %}
+        <a href="{% url 'detail' mood.id %}">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">{{ mood.name }}</span>
+              <p>Description: {{ mood.description }}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+  </div>  
+
+  <footer class="page-footer" style="background-color: rgb(27 66 246);">
+    <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
+  </footer>
+
+</body>
+</html>
