@@ -1,20 +1,64 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aura Beats</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-{% block content %}
-<img class="addmood" src="/static/img/addmoods.jpeg">
-{% if object %}
-  <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
-{% else %}
-  <h1>Add Mood</h1>
-{% endif %}
+</head>
+<body>
 
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper" style="background-color: rgb(161 75 147);">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="{% url 'about' %}">About</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'search_page' %}">Search Songs</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-<form action="" method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn">
-</form>
+  <div id="addmood-body">
+    <div id="addmood-container">
+      {% if object %}
+        <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+      {% else %}
+        <h1 id="title-text">ADD MOOD</h1>
+      {% endif %}
 
-{% endblock %}
+      <form class="flex-ctr" action="" method="POST">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <div class="center-align">
+          <input type="submit" value="Submit!" class="btn">
+        </div>
+      </form>
+    </div>
+  </div>
+
+<footer class="page-footer" style="background-color: rgb(161 75 147);">
+  <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
+</footer>
+
+</body>
+</html>
