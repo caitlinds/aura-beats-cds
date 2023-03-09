@@ -20,5 +20,5 @@ urlpatterns = [
   path('songs/search/', views.search_video, name='search_video'),
   path('songs/<int:pk>/update/', views.SongUpdate.as_view(), name='songs_update'),
   path('songs/<int:pk>/delete/', views.SongDelete.as_view(), name='songs_delete'),
-  path('addtomood/', views.add_to_mood, name='add_to_mood'),
+  path('add_to_mood/', views.add_to_mood, name='add_to_mood'),
 ]

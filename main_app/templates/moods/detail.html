@@ -1,14 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{{ mood.videos.count }}
 <h1>Mood Details</h1>
-
 <div class="row">
   <div class="col s6">
     <div class="card">
       <div class="card-content">
         <span class="card-title">{{ mood.name }}</span>
         <p>Description: {{ mood.description|linebreaks }}</p>
+        <h4>Videos:</h4>
+        <ul>
+          {% for video in mood.videos.all %}
+          <li>
+            <h5>{{ video.title }}</h5>
+            <img src="{{ video.thumbnail }}" alt="{{ video.title }}">
+            <p>{{ video.description }}</p>
+          </li>
+          {% empty %}
+          <li>No videos found.</li>
+          {% endfor %}
+        </ul>
       </div>
       <div class="card-action">
         <a href="{% url 'moods_update' mood.id %}">Edit</a>
@@ -16,8 +27,5 @@
       </div>
     </div>
   </div>
-  
-
+</div>
 {% endblock %}
-
-

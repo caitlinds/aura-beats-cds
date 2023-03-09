@@ -31,19 +31,27 @@ def signup(request):
 
 def search_video(request):
     search_term = request.GET.get('q')
-    response = requests.get(
-        f'{os.environ["YOUTUBE_ROOT"]}q={search_term}&type=video&key={os.environ["YOUTUBE_API"]}&maxResults=10')
-    data = response.json()
     videos = []
-    for item in data['items']:
-        title = item['snippet']['title']
-        video = {
-            'title': title,
-            'thumbnail': item['snippet']['thumbnails']['default']['url'],
-            'video_id': item['id']['videoId'],
-            'description': item['snippet']['description'],
-        }
-        videos.append(video)
+    params = {
+        'key': os.environ['YOUTUBE_API'],
+        'q': search_term,
+        'type': 'video',
+        'part': 'snippet',
+        'maxResults': 10,
+    }
+    response = requests.get(
+        f'{os.environ["YOUTUBE_ROOT"]}search', params=params)
+    data = response.json()
+    if 'items' in data:
+        for item in data['items']:
+            title = item['snippet']['title']
+            video = {
+                'title': title,
+                'thumbnail': item['snippet']['thumbnails']['high']['url'],
+                'video_id': item['id']['videoId'],
+                'description': item['snippet']['description'],
+            }
+            videos.append(video)
     moods = Mood.objects.filter(user=request.user)
     print(moods.count())
     return render(request, 'songs/search_song.html', {
@@ -51,6 +59,30 @@ def search_video(request):
         'search_term': search_term,
         'moods': moods
     })
+
+def add_to_mood(request):
+    if request.method == "POST":
+        video_id = request.POST.get('video_id')
+        video_title = request.POST.get('video_title')
+        video_thumbnail = request.POST.get('video_thumbnail')
+        video_description = request.POST.get('video_description')
+        mood_id = request.POST.get('mood_id')
+        if video_id and video_title and video_thumbnail:
+            try:
+                video, created = Video.objects.get_or_create(
+                    video_id=video_id,
+                    defaults={
+                        "title": video_title,
+                        "thumbnail": video_thumbnail,
+                        "description": video_description,
+                    }
+                )
+                video.save()  # Save the newly created video object to the database
+                mood = Mood.objects.get(id=mood_id)
+                mood.videos.add(video.id)
+            except Exception as e:
+                print(e)
+    return redirect('search_video')
 
 
 def search_page(request):
@@ -71,7 +103,7 @@ def moods_index(request):
 def moods_detail(request, mood_id):
     mood = Mood.objects.get(id=mood_id)
     return render(request, 'moods/detail.html', {
-        'mood': mood
+        'mood': mood,
     })
 
 # def favorites(request, mood_id):
@@ -140,22 +172,3 @@ class SongUpdate(UpdateView):
 class SongDelete(DeleteView):
     model = Song
     success_url = '/songs'
-
-
-def add_to_mood(request):
-    if request.method == "POST":
-        try:
-            video, created = Video.objects.get_or_create(
-                video_id=request.POST.get(video_id),
-                defaults={
-                    "title": request.POST.get(video_title),
-                    "thumbnail": request.POST.get(video_thumbnail),
-                    "description": request.POST.get(video_description),
-                }
-            )
-            mood_id = request.POST.get(mood_id)
-            mood = Mood.objects.get(id=mood_id)
-            mood.videos.add(video_id)
-        except Exception as e:
-            print(e)
-    return redirect('search_video')
