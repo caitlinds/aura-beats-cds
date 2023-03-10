@@ -1,12 +1,12 @@
 <div id="header" align="center">
 
-  <img src="https://i.imgur.com/NGabKqX.png" width="800" height="400">
+  <img src="https://i.imgur.com/fxLphNu.png" width="800" height="400">
 
 </div>
 
 <div id="description" align="center">
 
-  # Meet Your Classmates
+  # AURA BEATS
 
   ### [CLICK TO DEMO](https://aurabeats.herokuapp.com)
 
@@ -52,7 +52,6 @@ Music for your Mood! Aura Beats allows users to create and listen to playlists b
    ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-05122A?style=flat&logo=postgresql)
   ![Materialize CSS](https://img.shields.io/badge/-Materialize_CSS-05122A?style=flat&logo=materialdesign)
   
-  ![bit.io](https://i.imgur.com/dgJUn5C.png)
 
 ## :fire: Getting Started
 
@@ -78,7 +77,8 @@ Music for your Mood! Aura Beats allows users to create and listen to playlists b
 
 <details open>
   <summary> Trello Board </summary>
-  <a href="https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats"></a>
+  <a href="https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats">https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats
+  </a>
 </details>
 
 <details open>
