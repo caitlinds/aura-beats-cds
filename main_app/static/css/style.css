@@ -290,6 +290,7 @@ footer.page-footer {
   position: relative;
   display: inline-block;
 }
+
 .play-button {
   position: absolute;
   top: 50%;
@@ -301,12 +302,15 @@ footer.page-footer {
   background-size: cover;
   cursor: pointer;
 }
+
 .thumbnail:hover .play-button {
   display: none;
 }
+
 .hide {
   display: none;
 }
+
 .video-embed-iframe {
   width: 100%;
   height: 400px;
