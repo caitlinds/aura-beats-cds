@@ -6,7 +6,7 @@
 
 <div id="description" align="center">
 
-  # AURA BEATS
+  
 
   ### [CLICK TO DEMO](https://aurabeats.herokuapp.com)
 
