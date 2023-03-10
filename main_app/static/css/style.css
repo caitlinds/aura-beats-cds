@@ -11,7 +11,13 @@ body {
 } */
 
 .home {
-  margin: 20px;
+  background-size: cover;
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; 
 }
 
 main {
@@ -317,4 +323,12 @@ footer.page-footer {
   height: 400px;
   margin-top: 20px;
   display: none;
+}
+
+#login-body {
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
