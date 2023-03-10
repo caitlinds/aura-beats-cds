@@ -11,14 +11,14 @@ body {
 } */
 
 .home-container {
-  background-image: url("/static/img/home.jpeg");
+  background-image: url("/static/img/home.jpg");
   background-size: cover;
-  height: 86.5vh;
+  height: 87vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px; 
+  margin: 40px; 
 }
 
 main {
