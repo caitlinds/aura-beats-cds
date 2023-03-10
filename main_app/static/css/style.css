@@ -50,7 +50,6 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color:#D54600;
   opacity: 0.9;
   max-width: 700px;
@@ -91,7 +90,6 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color:rgb(101 232 211);
   opacity: 0.9;
   max-width: 700px;
@@ -105,12 +103,6 @@ footer.page-footer {
   overflow-y: scroll;
   color: rgb(27 66 246);
 }
-
-/* .mood-card {
-  height: 300px;
-  width: 300px;
-  border: 2px solid black;
-} */
 
 #title {
   color: rgb(27 66 246);
@@ -195,6 +187,7 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 #songlist-container {
@@ -247,7 +240,7 @@ footer.page-footer {
   background-color: black;
   opacity: 0.9;
   max-width: 700px;
-  max-height: 400px;
+  max-height: 300px;
   color: white;
   padding: 10px;
   place-items: center;
@@ -262,7 +255,6 @@ footer.page-footer {
 }
 
 #mooddetails-body {
-  /* background-image: url("/static/img/mymood.jpeg"); */
   background-size: cover;
   height: 87.5vh;
   display: flex;
@@ -305,6 +297,7 @@ footer.page-footer {
   position: relative;
   display: inline-block;
 }
+
 .play-button {
   position: absolute;
   top: 50%;
@@ -316,12 +309,15 @@ footer.page-footer {
   background-size: cover;
   cursor: pointer;
 }
+
 .thumbnail:hover .play-button {
   display: none;
 }
+
 .hide {
   display: none;
 }
+
 .video-embed-iframe {
   width: 100%;
   height: 400px;
