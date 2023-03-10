@@ -10,7 +10,8 @@ body {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 } */
 
-.home {
+.home-container {
+  background-image: url("/static/img/home.jpeg");
   background-size: cover;
   height: 86.5vh;
   display: flex;
