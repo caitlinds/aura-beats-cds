@@ -1,10 +1,56 @@
-{% extends 'base.html' %}
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aura Beats</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<h1>Search for a Song</h1>
-<form action="{% url 'search_video' %}" method="GET">
-    <input type="text" name="q" value="{{ search_term }}">
-    <button type="submit">Search</button>
-</form>
+</head>
+<body>
 
-{% endblock %}
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper" style="background-color: rgb(159 0 15);">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="{% url 'about' %}">About</a></li> 
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'search_page' %}">Search Songs</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div id="searchsong-body">
+    <h1 id="searchsong-title">Search for a Song</h1>
+      <div id="searchsong-container">
+        <form action="{% url 'search_video' %}" method="GET">
+            <input type="text" name="q" value="{{ search_term }}">
+            <div class="center-align">
+                <button class="btn" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <footer class="page-footer" style="background-color: rgb(159 0 15);">
+        <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
+    </footer>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Mood, User, Song, Video, Photo
+from .models import Mood, User, Video, Photo
 from datetime import date
 import requests
 
@@ -80,7 +80,7 @@ def add_to_mood(request):
                         "description": video_description,
                     }
                 )
-                video.save()  # Save the newly created video object to the database
+                video.save()
                 mood = Mood.objects.get(id=mood_id)
                 mood.videos.add(video.id)
             except Exception as e:
@@ -109,23 +109,6 @@ def moods_detail(request, mood_id):
         'mood': mood,
     })
 
-# def favorites(request, mood_id):
-#     mood = get_object_or_404(Mood, pk=mood_id)
-#     if mood.favorites.filter(id=request.user.ide).exist():
-#         mood.favorites.remove(request.user)
-#     else:
-#         mood.favorites.add(request.user)
-#     return render(request, 'moods/favorites.html')
-
-# def mood_favorite_list(request, id):
-#     user=request.user
-#     favorite_moods = user.favorites.all()
-#     context = {
-#         'favorite_moods': favorite_moods
-#     }
-#     return render(request, 'moods/favorites.html', context)
-
-
 @login_required
 def my_moods(request):
     userz = request.user
@@ -140,7 +123,6 @@ class MoodCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-
         return super().form_valid(form)
 
 
@@ -152,29 +134,6 @@ class MoodUpdate(UpdateView):
 class MoodDelete(DeleteView):
     model = Mood
     success_url = '/moods'
-
-
-class SongList(ListView):
-    model = Song
-
-
-class SongDetail(DetailView):
-    model = Song
-
-
-class SongCreate(CreateView):
-    model = Song
-    fields = '__all__'
-
-
-class SongUpdate(UpdateView):
-    model = Song
-    fields = ['title', 'url']
-
-
-class SongDelete(DeleteView):
-    model = Song
-    success_url = '/songs'
 
 def add_photo(request, mood_id):
     photo_file = request.FILES.get('photo-file', None)
