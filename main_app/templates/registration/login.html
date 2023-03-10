@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="login-body" style="padding: 300px;" >
 <h1>Log In</h1>
 <form action="{% url 'login' %}" method="POST">
   {% csrf_token %}
@@ -7,5 +8,5 @@
   <input type="hidden" name="next" value="{{ next }}">
   <button type="submit" class="btn">Log In</button>
 </form>
-
+</div>
 {% endblock %}
