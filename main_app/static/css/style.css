@@ -11,7 +11,13 @@ body {
 } */
 
 .home {
-  margin: 20px;
+  background-size: cover;
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; 
 }
 
 main {
@@ -306,7 +312,7 @@ footer.page-footer {
   transform: translate(-50%, -50%);
   width: 80px;
   height: 80px;
-  background: url('../img/play.png') no-repeat;
+  background: url('static/img/play.png') no-repeat;
   background-size: cover;
   cursor: pointer;
 }
