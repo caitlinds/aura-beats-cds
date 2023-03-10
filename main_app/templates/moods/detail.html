@@ -1,41 +1,93 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>Mood Details</h1>
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ mood.name }}</span>
-        <p>Description: {{ mood.description|linebreaks }}</p>
-        <h4>Videos:</h4>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aura Beats</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/search.js' %}"></script>
+
+</head>
+<body>
+
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper" style="background-color: rgb(159 0 15);">
         <ul>
-          {% for video in mood.videos.all %}
-          <li>
-            <h5>{{ video.title }}</h5>
-            <img src="{{ video.thumbnail }}" alt="{{ video.title }}">
-            <p>{{ video.description }}</p>
-          </li>
-          {% empty %}
-          <li>No videos found.</li>
-          {% endfor %}
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="{% url 'about' %}">About</a></li> 
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'search_page' %}">Search Songs</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
-      <div class="card-action">
-        <a href="{% url 'moods_update' mood.id %}">Edit</a>
-        <a href="{% url 'moods_delete' mood.id %}">Delete</a>
-      </div>
-    </div>
-  </div>
-</div>
-{% for photo in mood.photo_set.all %}
-<img class="responsive-img card-panel" src="{{photo.url}}">
-{% empty %}
-<div class="card-panel teal-text center-align">No Photos Uploaded</div>
-{% endfor %}
-<form action="{% url 'add_photo' mood.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-  {% csrf_token %}
-  <input type="file" name="photo-file">
-  <br><br>
-  <button type="submit" class="btn">Upload Photo</button>
-</form>
-{% endblock %}
+    </nav>
+  </header>
+
+  <div id="mooddetails-body">
+    <h1 class="mooddetails-title">{{ mood.name }}</h1>
+    <h6 class="mooddetails-subtitle">{{ mood.description|linebreaks }}</h4>
+      <div id="mooddetails-container">
+            <div class="card">
+              <div class="card-content">
+                <br><br><br><br>
+                <br><br><br><br>
+                <br><br><br><br>
+                <br><br><br><br>
+                <br><br><br><br>
+                <br><br><br><br>
+                <ul>
+                {% for video in mood.videos.all %}
+                <li>
+                <div class="video-wrapper">
+                    <h2 class="vid-title">{{ video.title }}</h2>
+                    <div class="thumbnail" data-video-id="{{ video.video_id }}">
+                      <img src="{{ video.thumbnail }}" />
+                      <div class="play-button"></div>
+                    </div>
+                    <div class="video-embed video-embed-iframe" id="{{ video.video_id}}"></div>
+                </li>
+                  {% empty %}
+                  <li>No videos found.</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="card-action">
+                <a href="{% url 'moods_update' mood.id %}">Edit</a>
+                <a href="{% url 'moods_delete' mood.id %}">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  {% for photo in mood.photo_set.all %}
+    <img class="responsive-img card-panel" src="{{photo.url}}">
+  {% empty %}
+    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+  {% endfor %}
+    <form action="{% url 'add_photo' mood.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="file" name="photo-file">
+      <br><br>
+      <button type="submit" class="btn">Upload Photo</button>
+    </form>
+
+  <footer class="page-footer" style="background-color: rgb(159 0 15);">
+    <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
+  </footer>
+
+</body>
+</html>

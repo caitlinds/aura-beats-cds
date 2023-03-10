@@ -1,39 +1,95 @@
-{% extends 'base.html' %}
-{% block content %}
 {% load static %}
-<script src="{% static 'js/search.js' %}"></script>
-<form action="{% url 'search_video'%}" method="GET">
-  {% csrf_token %}
-  <input type="text" name="q" value="{{ search_term }}" />
-  <button type="submit">Search</button>
-</form>
-<h1>Results For! {{ search_term }}</h1>
-{% for video in videos %}
-<div class="video-wrapper">
-  <h2>{{ video.title }}</h2>
-  <p>{{ video.description }}</p>
-  <div class="thumbnail" data-video-id="{{ video.video_id }}">
-    <img src="{{ video.thumbnail }}" />
-    <div class="play-button"></div>
-  </div>
-  <div class="video-embed video-embed-iframe" id="{{ video.video_id}}"></div>
-  <form method="post" action="{% url 'add_to_mood' %}">
-    {% csrf_token %}
-    <input type="hidden" name="video_id" value="{{ video.video_id}}">
-    <input type="hidden" name="video_title" value="{{ video.title}}">
-    <input type="hidden" name="video_description" value="{{ video.description}}">
-    <input type="hidden" name="video_thumbnail" value="{{ video.thumbnail}}">
-    <select name="mood_id">
-      {% for mood in moods %}
-        <option value="{{ mood.id}}">{{mood.name}}</option>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aura Beats</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/search.js' %}"></script>
+</head>
+<body>
+
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper" style="background-color: black;">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
+        </ul>
+        <ul class="right">
+          <li><a href="{% url 'about' %}">About</a></li> 
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">View All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'my_moods' %}">My Moods</a></li>
+            <li><a href="{% url 'search_page' %}">Search Songs</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div id="songlist-body">
+    <form action="{% url 'search_video'%}" method="GET">
+      {% csrf_token %}
+      <input type="text" class="songlist-title" name="q" value="{{ search_term }}" />
+      <div class="center-align">
+        <button class="btn " type="submit">Search</button>
+      </div>
+    </form>
+    <h2 class="songlist-title">Results for: "{{ search_term }}"</h1>
+    <div id="songlist-container">
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+      {% for video in videos %}
+      <div class="video-wrapper">
+        <h2 class="vid-title">{{ video.title }}</h2>
+        <p>{{ video.description }}</p>
+        <div class="thumbnail" data-video-id="{{ video.video_id }}">
+          <img src="{{ video.thumbnail }}" /> 
+          <div class="play-button"></div>
+        </div>
+        <div class="video-embed video-embed-iframe" id="{{ video.video_id}}"></div>
+        <form method="post" action="{% url 'add_to_mood' %}">
+          {% csrf_token %}
+          <input type="hidden" name="video_id" value="{{ video.video_id}}">
+          <input type="hidden" name="video_title" value="{{ video.title}}">
+          <input type="hidden" name="video_description" value="{{ video.description}}">
+          <input type="hidden" name="video_thumbnail" value="{{ video.thumbnail}}">
+          <select name="mood_id">
+            {% for mood in moods %}
+              <option value="{{ mood.id}}">{{mood.name}}</option>
+            {% endfor %}
+          </select>
+          <div class="center-align">
+            <button class="btn" type="submit">Add to Mood</button>
+          </div>
+        </form>
+      </div>
       {% endfor %}
-    </select>
-    <button type="submit">Add to Mood</button>
-  </form>
-</div>
-{% endfor %}
-<script>
-const selectEl = document.querySelectorAll('select');
-  M.FormSelect.init(selectEl);
-</script>
-{% endblock %}
+    </div>
+  </div>
+
+  <footer class="page-footer" style="background-color: black;">
+    <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
+  </footer>
+
+  <script>
+  const selectEl = document.querySelectorAll('select');
+    M.FormSelect.init(selectEl);
+  </script>
+
+</body>
+</html>

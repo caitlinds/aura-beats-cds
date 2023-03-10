@@ -146,6 +146,79 @@ footer.page-footer {
   margin-top: 0px;
 }
 
+#searchsong-body {
+  background-image: url("/static/img/songs.jpeg");
+  background-size: cover;
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchsong-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  opacity: 0.9;
+  max-width: 600px;
+  max-height: 200px;
+  color: white;
+  padding: 10px;
+  place-items: center;
+  border-radius: 0.8em;
+  box-shadow: 0 0 0 0.4em white;
+  outline: 0.8em solid white;
+  overflow-y: scroll;
+}
+
+#searchsong-title {
+  color: white;
+}
+
+#songlist-body {
+  background-image: url("/static/img/addsong.jpeg");
+  background-size: cover;
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#songlist-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+  opacity: 0.9;
+  max-width: 700px;
+  max-height: 300px;
+  color: white;
+  padding: 10px;
+  place-items: center;
+  border-radius: 0.8em;
+  box-shadow: 0 0 0 0.4em white;
+  outline: 0.8em solid white;
+  overflow-y: scroll;
+  color: rgb(27 66 246);
+}
+
+.songlist-title {
+  color: white;
+}
+
+.vid-title {
+  font-size: 30px;;
+}
+
 #mymoods-body {
   background-image: url("/static/img/mymood.jpeg");
   background-size: cover;
@@ -178,4 +251,72 @@ footer.page-footer {
 
 #mymoods-title {
   color: white;
+}
+
+#mooddetails-body {
+  /* background-image: url("/static/img/mymood.jpeg"); */
+  background-size: cover;
+  height: 87.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#mooddetails-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  opacity: 0.9;
+  max-width: 700px;
+  max-height: 400px;
+  color: black;
+  padding: 10px;
+  place-items: center;
+  border-radius: 0.8em;
+  box-shadow: 0 0 0 0.4em black;
+  outline: 0.8em solid black;
+  overflow-y: scroll;
+}
+
+.mooddetails-title {
+  color: black;
+  margin: 0px;
+}
+
+.mooddetails-subtitle {
+  color: black;
+  margin-bottom: 20px;
+}
+
+.thumbnail {
+  position: relative;
+  display: inline-block;
+}
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: url('../img/play.png') no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.thumbnail:hover .play-button {
+  display: none;
+}
+.hide {
+  display: none;
+}
+.video-embed-iframe {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  display: none;
 }
