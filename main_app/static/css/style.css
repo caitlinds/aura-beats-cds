@@ -299,7 +299,7 @@ footer.page-footer {
   transform: translate(-50%, -50%);
   width: 80px;
   height: 80px;
-  background: url('../img/play.png') no-repeat;
+  background: url('static/img/play.png') no-repeat;
   background-size: cover;
   cursor: pointer;
 }
