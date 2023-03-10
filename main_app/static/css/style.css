@@ -154,6 +154,7 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px; 
 }
 
 #searchsong-container {
@@ -227,6 +228,7 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px; 
 }
 
 #mymoods-container {
