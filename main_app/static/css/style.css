@@ -66,11 +66,11 @@ footer.page-footer {
 #about-body{
   background-image: url("/static/img/about.jpeg");
   background-size: cover;
-  height: 82vh;
+  height: 87vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 20px; 
 }
 
 #index-body {
@@ -117,6 +117,7 @@ footer.page-footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 #addmood-container {
@@ -256,12 +257,14 @@ footer.page-footer {
 }
 
 #mooddetails-body {
+  background-image: url("/static/img/mooddetail.jpeg");
   background-size: cover;
   height: 87.5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px;
 }
 
 #mooddetails-container {
@@ -275,22 +278,22 @@ footer.page-footer {
   opacity: 0.9;
   max-width: 700px;
   max-height: 400px;
-  color: #8B000E;
+  color: white;
   padding: 10px;
   place-items: center;
   border-radius: 0.8em;
   box-shadow: 0 0 0 0.4em #8B000E;
-  outline: 0.8em solid #8B000E;
+  outline: 0.8em solid white;
   overflow-y: scroll;
 }
 
 .mooddetails-title {
-  color: #8B000E;
+  color: white;
   margin: 0px;
 }
 
 .mooddetails-subtitle {
-  color: #8B000E;
+  color: white;
   margin-bottom: 20px;
 }
 
