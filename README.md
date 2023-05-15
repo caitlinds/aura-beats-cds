@@ -82,9 +82,9 @@ Music for your Mood! Aura Beats allows users to create and listen to playlists b
 </details>
 
 <details open>
-  <summary> Deployed Link (Heroku) </summary>
-  <a href="https://aurabeats.herokuapp.com/"
-    > https://aurabeats.herokuapp.com/ </a
+  <summary> Access App Here: </summary>
+  <a href="https://aura-beats-cds.herokuapp.com/"
+    > Aura Beats </a
   >
 </details>
 
