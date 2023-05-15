@@ -29,5 +29,5 @@ class Photo(models.Model):
     mood = models.ForeignKey(Mood, on_delete=models.CASCADE)
     url = models.CharField(max_length=200)
     def __str__(self):
-        return f'{self.mood} ({self.url})'
+        return f'{self.mood} ({self.url})' 
 
