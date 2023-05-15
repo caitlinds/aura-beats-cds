@@ -132,7 +132,7 @@ class MoodUpdate(UpdateView):
 
 
 class MoodDelete(DeleteView):
-    model = Mood
+    model = Mood 
     success_url = '/moods'
 
 def add_photo(request, mood_id):
