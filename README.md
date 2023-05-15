@@ -6,11 +6,11 @@
 
 <div id="description" align="center">
 
-  
-
   ### [CLICK TO DEMO](https://aurabeats.herokuapp.com)
 
   ##### Alan Potterton, Caitlin Snell, and Monica Karasek
+
+  ## Change test
 
   ## :pencil: Description
 
