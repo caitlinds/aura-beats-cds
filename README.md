@@ -8,7 +8,7 @@
 
   ### [CLICK TO DEMO](https://aurabeats.herokuapp.com)
 
-  ##### Alan Potterton, Caitlin Snell, and Monica Karasek and MEE!!!
+  ##### Alan Potterton, Caitlin Snell, and Monica Karasek
 
   ## Change test
 
