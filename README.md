@@ -77,12 +77,12 @@ Music for your Mood! Aura Beats allows users to create and listen to playlists b
 
 <details open>
   <summary> Trello Board </summary>
-  <a href="https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats">https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats
+  <a href="https://trello.com/invite/b/LmgUE5Kb/ATTI5b73f7dbc277a73fb35c472732a2e432A5B3EB1C/aura-beats">View Trello Board
   </a>
 </details>
 
 <details open>
-  <summary> Access App Here: </summary>
+  <summary> Visit App </summary>
   <a href="https://aura-beats-cds.herokuapp.com/"
     > Aura Beats </a
   >
