@@ -10,7 +10,6 @@
 
   ##### Alan Potterton, Caitlin Snell, and Monica Karasek
 
-  ## Change test
 
   ## :pencil: Description
 
