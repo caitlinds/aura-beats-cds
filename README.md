@@ -1,12 +1,12 @@
 <div id="header" align="center">
 
-  <img src="https://i.imgur.com/fxLphNu.png" width="800" height="400">
+  <img src="https://i.imgur.com/fxLphNu.png" width="600" height="400">
 
 </div>
 
 <div id="description" align="center">
 
-  ### [CLICK TO DEMO](https://aurabeats.herokuapp.com)
+  ### [CLICK TO DEMO](https://aura-beats-cds.herokuapp.com/)
 
   ##### Alan Potterton, Caitlin Snell, and Monica Karasek
 
