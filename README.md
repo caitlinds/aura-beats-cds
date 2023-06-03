@@ -44,7 +44,7 @@
   width="700"
   /> 
   <h3>Mood Playlist Page</h3> <img
-  src="https://i.imgur.com/Y62SZDu.png"
+  src="https://i.imgur.com/qcF4nux.png"
   width="700"
   /> 
 
