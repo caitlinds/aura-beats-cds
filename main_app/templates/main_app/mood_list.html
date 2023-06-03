@@ -15,15 +15,15 @@
 
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper" style="background-color: black;">
+      <div class="nav-wrapper" style="background-color: rgb(45, 70, 200);">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li> 
           {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Moods</a></li>
-            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'index' %}">All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Create Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -39,12 +39,6 @@
   <div id="mymoods-body">
     <h1 id="mymoods-title">My Moods</h1>
       <div id="mymoods-container">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         {% for mood in moods %}
           <a href="{% url 'detail' mood.id %}">
             <div class="card">
@@ -58,7 +52,7 @@
       </div>
   </div>
 
-  <footer class="page-footer" style="background-color: black;">
+  <footer class="page-footer" style="background-color: rgb(45, 70, 200);">
     <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
   </footer>
 

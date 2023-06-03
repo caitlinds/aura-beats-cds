@@ -16,15 +16,15 @@
 
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper" style="background-color: rgb(159 0 15);">
+      <div class="nav-wrapper" style="background-color: rgb(119, 190, 192);">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li> 
           {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Moods</a></li>
-            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'index' %}">All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Create Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -43,12 +43,6 @@
       <div id="mooddetails-container">
             <div class="card">
               <div class="card-content">
-                <br><br><br><br>
-                <br><br><br><br>
-                <br><br><br><br>
-                <br><br><br><br>
-                <br><br><br><br>
-                <br><br><br><br>
                 <ul>
                 {% for video in mood.videos.all %}
                 <li>
@@ -85,7 +79,7 @@
       <button type="submit" class="btn">Upload Photo</button>
     </form>
 
-  <footer class="page-footer" style="background-color: rgb(159 0 15);">
+  <footer class="page-footer" style="background-color: rgb(119, 190, 192);">
     <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
   </footer>
 

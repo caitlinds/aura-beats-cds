@@ -16,15 +16,15 @@
 
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper" style="background-color: black;">
+      <div class="nav-wrapper" style="background-color: rgb(175, 205, 213);">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;AURA BEATS</a></li>
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li> 
           {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Moods</a></li>
-            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'index' %}">All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Create Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -40,29 +40,22 @@
   <div id="songlist-body">
     <form action="{% url 'search_video'%}" method="GET">
       {% csrf_token %}
-      <input type="text" class="songlist-title" name="q" value="{{ search_term }}" />
+      <input type="text" class="songlist-search" name="q" value="{{ search_term }}" />
       <div class="center-align">
-        <button class="btn " type="submit">Search</button>
+        <button class="btn " type="submit">Search Again</button>
       </div>
     </form>
     <h2 class="songlist-title">Results for: "{{ search_term }}"</h1>
     <div id="songlist-container">
-      <br><br><br><br>
-      <br><br><br><br>
-      <br><br><br><br>
-      <br><br><br><br>
-      <br><br><br><br>
-      <br><br><br><br>
-      <br><br><br><br>
       {% for video in videos %}
       <div class="video-wrapper">
         <h2 class="vid-title">{{ video.title }}</h2>
-        <p>{{ video.description }}</p>
+        <p class="vid-description">{{ video.description }}</p>
         <div class="thumbnail" data-video-id="{{ video.video_id }}">
           <img src="{{ video.thumbnail }}" /> 
           <div class="play-button"></div>
         </div>
-        <div class="video-embed video-embed-iframe" id="{{ video.video_id}}"></div>
+        <div class="video-embed video-embed-iframe center-align" id="{{ video.video_id}}"></div>
         <form method="post" action="{% url 'add_to_mood' %}">
           {% csrf_token %}
           <input type="hidden" name="video_id" value="{{ video.video_id}}">
@@ -79,11 +72,13 @@
           </div>
         </form>
       </div>
+      <br>
+      <br>
       {% endfor %}
     </div>
   </div>
 
-  <footer class="page-footer" style="background-color: black;">
+  <footer class="page-footer" style="background-color: rgb(175, 205, 213);">
     <div class="right">All Rights Reserved, &copy; 2023 AURA BEATS &nbsp;</div>
   </footer>
 

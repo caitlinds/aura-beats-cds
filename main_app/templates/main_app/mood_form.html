@@ -22,8 +22,8 @@
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Moods</a></li>
-            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'index' %}">All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Create Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -37,20 +37,20 @@
   </header>
 
   <div id="addmood-body">
+    {% if object %}
+    <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+    {% else %}
+    <h1 id="title-text">Create a Mood</h1>
+    {% endif %}
+    
     <div id="addmood-container">
-      {% if object %}
-        <h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
-      {% else %}
-        <h1 id="title-text">ADD MOOD</h1>
-      {% endif %}
-
       <form class="flex-ctr" action="" method="POST">
         {% csrf_token %}
         <table>
           {{ form.as_table }}
         </table>
         <div class="center-align">
-          <input type="submit" value="Submit!" class="btn">
+          <input type="submit" value="Submit" class="btn">
         </div>
       </form>
     </div>

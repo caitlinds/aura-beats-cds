@@ -23,8 +23,8 @@
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li> 
           {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">View All Moods</a></li>
-            <li><a href="{% url 'moods_create' %}">Add a Mood</a></li>
+            <li><a href="{% url 'index' %}">All Moods</a></li>
+            <li><a href="{% url 'moods_create' %}">Create Mood</a></li>
             <li><a href="{% url 'my_moods' %}">My Moods</a></li>
             <li><a href="{% url 'search_page' %}">Search Songs</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
@@ -40,10 +40,6 @@
   <div id="index-body">
   <h1 id="title">All Moods</h1>
     <div id="index-container">
-      <br>
-      <br>
-      <br>
-      <br>
       {% for mood in moods %}
         <a href="{% url 'detail' mood.id %}">
           <div class="card">
