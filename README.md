@@ -12,8 +12,7 @@
 
   ##
   ## :pencil: Description
-
-Music for your Mood! Aura Beats allows users to create and listen to playlists based on their moods. Users have the ability to create moods, mood playlists, songs/videos, and search for songs/videos. Users are able to edit moods, update moods, and post photos.
+  Music for your Mood! Aura Beats allows users to create and listen to playlists based on their moods. Users have the ability to create moods, mood playlists, songs/videos, and search for songs/videos. Users are able to edit moods, update moods, and post photos.
 
   </div>
 
