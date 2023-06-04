@@ -36,7 +36,7 @@
   width="700"
   /> 
   <h3>Song Search Page</h3> <img
-  src="https://i.imgur.com/eslLAgE.jpg"
+  src="https://i.imgur.com/aHsaYOj.jpg"
   width="700"
   /> 
   <h3>Song Results Page</h3> <img
