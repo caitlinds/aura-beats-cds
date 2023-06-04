@@ -32,7 +32,7 @@
   width="700"
   /> 
   <h3>All Moods Page</h3> <img
-  src="https://i.imgur.com/GWfQu52.jpg"
+  src="https://i.imgur.com/WiZbmLO.jpg"
   width="700"
   /> 
   <h3>Song Search Page</h3> <img
