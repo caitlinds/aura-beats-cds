@@ -23,16 +23,16 @@
     src="https://i.imgur.com/FwBLNZs.jpg"
     width="700"
   /> 
+  <h3>All Moods Page</h3> <img
+  src="https://i.imgur.com/WiZbmLO.jpg"
+  width="700"
+  /> 
   <h3>My Moods Page</h3> <img
   src="https://i.imgur.com/NZh0mXg.png"
   width="700"
   /> 
   <h3>Create Mood Page</h3> <img
   src="https://i.imgur.com/Shn9lIw.png"
-  width="700"
-  /> 
-  <h3>All Moods Page</h3> <img
-  src="https://i.imgur.com/WiZbmLO.jpg"
   width="700"
   /> 
   <h3>Song Search Page</h3> <img
